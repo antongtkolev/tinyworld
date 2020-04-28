@@ -1,6 +1,4 @@
-<!DOCTYPE HTML>
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<!DOCTYPE HTML><head><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 
 <title>DevXdemo</title>
 
@@ -10,20 +8,32 @@ id="sap-ui-bootstrap" data-sap-ui-libs="sap.ui.commons, sap.ui.table" data-sap-u
 
 </script>
 
+<script src="./Util.js" > </script>
+
 <script>
 
   var oModel = new sap.ui.model.odata.ODataModel("/euro.xsodata", true);
 
-  var oTable = new sap.ui.table.Table({ title: "European Countries" });
+  var oTable = new sap.ui.table.Table({
+
+              title: "European Countries", visibleRowCount: 5, id: "tinytab",
+
+              toolbar: new sap.ui.commons.Toolbar({items: [
+
+              new sap.ui.commons.Button({text: "Add Country", press:openFirstDialog})
+
+       ]})});
+
+    
 
   oTable.addColumn(new sap.ui.table.Column({ label: "Country Name", template: "name" }));
 
   oTable.setModel(oModel); oTable.bindRows("/euro"); oTable.placeAt("content");
 
+    
+
 </script>
 
 </head>
 
-  <body class='sapUiBody'> <div id='content'></div> </body>
-
-</html>
+<body class="sapUiBody"> <div id="content"></div> </body> </html>
